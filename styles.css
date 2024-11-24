@@ -1,0 +1,843 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #333;
+    background-color: #e8e8e8;
+}
+
+
+main {
+    flex-grow: 1;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+
+/* Define altura mínima e espaço interno para o `main` */
+main.homepage {
+    flex: 1; /* Garante que o conteúdo ocupe o espaço restante da página */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em 1em;
+    overflow: hidden; /* Evita o vazamento do conteúdo */
+    padding-bottom: 3em; /* Garante espaço para o footer */
+}
+
+/* Estilos para a homepage */
+.homepage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: calc(100vh - 80px); /* Altura da viewport menos o tamanho do header */
+    padding: 0 1em; /* Adiciona espaçamento para telas menores */
+}
+
+.content-container {
+    max-width: 600px; /* Limita a largura para uma leitura confortável */
+}
+
+.homepage h1 {
+    font-size: 2.5rem;
+    color: #007acc;
+    margin-bottom: 1rem;
+}
+
+.homepage p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.homepage .button {
+    display: inline-block;
+    padding: 0.8em 1.5em;
+    background-color: #007acc;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.homepage .button:hover {
+    background-color: #005fa3;
+}
+
+/* Ajuste para modo escuro */
+body.dark-mode .homepage p {
+    color: #f0f0f0;
+}
+
+
+#editor-container {
+    display: flex;
+    gap: 2em;
+    width: 100%;
+    max-width: 1400px;
+}
+
+.editor-description {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1rem;
+    text-align: center;
+
+}
+
+
+#commit-form, #preview-container {
+    flex: 1;
+    padding: 2em;
+    background: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+}
+
+#commit-form h2, #preview-container h2 {
+    margin-bottom: 1em;
+    color: #007acc;
+    border-bottom: 1px solid #ddd; /* Linha fina abaixo do título */
+}
+
+label {
+    display: block;
+    margin: 0.5em 0 0.2em;
+}
+
+/* Estilo do container para alinhamento horizontal */
+.file-input-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 1em;
+    margin-bottom: 1em;
+}
+
+/* Ajuste do seletor e do campo de entrada */
+.file-selector, .file-input {
+    flex: 1;
+}
+
+/* Estilo do seletor com seta indicativa */
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    color: #333;
+    font-size: 1em;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 24 24' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+}
+
+/* Fundo da lista de opções para o modo claro */
+select option {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Estilo do seletor no modo escuro */
+body.dark-mode select {
+    background-color: #333;
+    color: #f0f0f0;
+    border: 1px solid #555;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 24 24' fill='%23f0f0f0' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+}
+
+/* Fundo da lista de opções para o modo escuro */
+body.dark-mode select option {
+    background-color: #333;
+    color: #f0f0f0;
+}
+
+select:hover {
+    border-color: #888;
+}
+
+select:focus {
+    border-color: #1a73e8;
+    outline: none;
+    box-shadow: 0 0 5px rgba(26, 115, 232, 0.5);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.8em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #888;
+}
+
+#preview-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.card {
+    padding: 1em;
+    background: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+pre {
+    padding: 1em;
+    background: #e9ecef;
+    border-radius: 4px;
+    font-family: monospace;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 1em;
+    color: #333;
+}
+
+button {
+    background-color: #007acc;
+    color: white;
+    padding: 0.8em 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #005fa3;
+}
+
+#clearFormButton {
+    background-color: #e74c3c;
+    margin-top: 1em;
+}
+
+#clearFormButton:hover {
+    background-color: #c0392b;
+}
+
+/* Footer fixo ao final */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    margin-top: auto;
+    position: relative; /* Sempre no final */
+    bottom: 0;
+    width: 100%; /* Garante que ocupe toda a largura */
+}
+
+/* Estilização para a seção de Emoji Opcional e Tipo de Commit */
+.emoji-commit-type {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 1em;
+}
+
+.emoji-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 0.5em;
+    font-size: 0.9em;
+    color: #4a4a4a;
+}
+
+.emoji-option input[type="checkbox"] {
+    margin-top: 0.3em;
+}
+
+.commit-type {
+    flex-grow: 1;
+}
+
+/* Modo Escuro */
+body.dark-mode {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+body.dark-mode header {
+    background-color: #1a73e8;
+    color: #f0f0f0;
+}
+
+body.dark-mode #commit-form, 
+body.dark-mode #preview-container,
+body.dark-mode .card {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode input, 
+body.dark-mode textarea {
+    background-color: #2d2d2d;
+    color: #f0f0f0;
+    border: 1px solid #555;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #bbb;
+}
+
+body.dark-mode pre {
+    background-color: #2d2d2d;
+    color: #f0f0f0;
+}
+
+body.dark-mode button {
+    background-color: #3a3a3a;
+    color: #f0f0f0;
+}
+
+body.dark-mode button:hover {
+    background-color: #555555;
+}
+
+body.dark-mode footer {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+    main {
+        padding: 1em;
+    }
+
+    #editor-container {
+        flex-direction: column;
+        gap: 1.5em;
+        max-width: 100%;
+    }
+
+    #commit-form, #preview-container {
+        padding: 1.5em;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    button {
+        padding: 0.7em 1em;
+    }
+
+    /* Ajuste para empilhar o seletor e campo de texto no mobile */
+    .file-input-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/*-----------------------------------*/
+
+
+#about-tool, #features, #usage {
+    background: #f5f5f5;
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-top: 1em;
+    color: #007acc;
+    margin-bottom: 1em;
+    font-size: 1.5rem;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 1em;
+    font-size: 1rem;
+}
+
+ul {
+    list-style: disc;
+    margin-left: 1.5em;
+    font-size: 1rem;
+    color: #333;
+}
+
+ul li {
+    margin-bottom: 0.5em;
+}
+
+a.button {
+    display: inline-block;
+    padding: 0.8em 1.5em;
+    background-color: #007acc;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: background 0.3s;
+    text-align: center;
+    margin-top: 1em;
+}
+
+a.button:hover {
+    background-color: #005fa3;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    margin-top: auto;
+}
+
+/* Modo Escuro */
+body.dark-mode {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+body.dark-mode header {
+    background-color: #1a73e8;
+    color: #f0f0f0;
+}
+
+body.dark-mode #about-tool, 
+body.dark-mode #features, 
+body.dark-mode #usage {
+    background: #1e1e1e;
+    color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode ul {
+    color: #f0f0f0;
+}
+
+body.dark-mode a.button {
+    background-color: #1a73e8;
+    color: #f0f0f0;
+}
+
+body.dark-mode a.button:hover {
+    background-color: #3a8ef1;
+}
+
+body.dark-mode footer {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+    main {
+        padding: 1em;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    ul {
+        font-size: 0.9rem;
+    }
+
+    a.button {
+        font-size: 0.9rem;
+        padding: 0.7em 1.2em;
+    }
+}
+
+
+/* Header principal */
+.main-header {
+    height: 80px; /* Altura ajustada */
+    background-color: #e8e8e8;
+    color: #333;
+    display: flex;
+    justify-content: space-between; /* Espaçamento entre o lado esquerdo e direito */
+    align-items: center; /* Alinha verticalmente */
+    padding: 0 2em;
+    position: relative;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Navegação do lado esquerdo */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5em;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #007acc;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #50eda9;
+}
+
+/* Título */
+.header-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+    white-space: nowrap; /* Evita quebra de linha */
+}
+
+/* Lado direito do header (botão claro/escuro) */
+.header-right {
+    display: flex;
+    justify-content: flex-end; /* Move os itens para o final */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+/* Tema escuro para o header */
+body.dark-mode .main-header {
+    background-color: #121212;
+}
+
+body.dark-mode .nav-link {
+    color: #1a73e8;
+}
+
+body.dark-mode .nav-link:hover {
+    color: #e0e0e0;
+}
+
+body.dark-mode .header-title {
+    color: #f0f0f0;
+}
+
+/* Switch de tema */
+.switch {
+    display: inline-block;
+    --width-of-switch: 2.5em;
+    --height-of-switch: 1.4em;
+    --size-of-icon: 1.2em;
+    --slider-offset: 0.2em;
+    position: relative;
+    width: var(--width-of-switch);
+    height: var(--height-of-switch);
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f4f4f5;
+    transition: 0.4s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: var(--size-of-icon);
+    width: var(--size-of-icon);
+    border-radius: 20px;
+    left: var(--slider-offset);
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #303136;
+}
+
+input:checked + .slider:before {
+    left: calc(100% - (var(--size-of-icon) + var(--slider-offset)));
+    background: #303136;
+    box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .main-header {
+        height: 70px;
+        padding: 0 1em;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+    }
+
+    .header-title {
+        font-size: 1.2rem;
+    }
+
+    .switch {
+        --width-of-switch: 2em;
+        --height-of-switch: 1em;
+        --size-of-icon: 0.9em;
+    }
+}
+
+
+/* Sessão de exemplos de commits */
+.commit-examples {
+    margin-top: 2em;
+    text-align: center;
+}
+
+.commit-examples h2 {
+    color: #007acc;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+/* Contêiner dos botões */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin-bottom: 2em;
+}
+
+/* Botões para exemplos de commits */
+.commit-example-button {
+    padding: 0.8em 1.5em;
+    border: none;
+    background-color: #007acc;
+    color: white;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.commit-example-button:hover {
+    background-color: #005fa3;
+}
+
+/* Cartão de exemplo de commit */
+.commit-preview-card {
+    background: #f5f5f5;
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.commit-preview-card h3 {
+    color: #007acc;
+    margin-bottom: 1em;
+}
+
+/* Estilo para o comando de commit */
+.commit-preview-card pre {
+    font-family: monospace;
+    white-space: pre-wrap;
+    background: #e9ecef;
+    padding: 1em;
+    border-radius: 4px;
+    color: #333;
+    margin-bottom: 1em;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+body.dark-mode .commit-preview-card {
+    background: #1e1e1e; /* Fundo escuro */
+    color: #f0f0f0; /* Texto claro */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Ajuste na sombra */
+}
+
+
+/* Ajustes de responsividade */
+@media (max-width: 768px) {
+    .commit-preview-card pre {
+        font-size: 0.9rem;
+    }
+}
+
+/* Estilo para a imagem logo */
+.commit-logo {
+    display: block;
+    margin: 1rem auto; /* Centraliza horizontalmente */
+    max-width: 100px; /* Ajuste o tamanho máximo da imagem */
+    width: 100%; /* Responsividade */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+
+
+/* Geral */
+
+h1, h2 {
+    color: #007acc;
+    text-align: center;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 2rem;
+}
+
+a {
+    color: #007acc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* Header */
+.about-header {
+    background-color: #333;
+    color: white;
+    padding: 1.5rem 0;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Conteúdo principal */
+.about-page {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-structure pre {
+    background: #e8f4fc;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-family: monospace;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Footer */
+.about-footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Estilo para os títulos */
+.about-page h2, .about-page h3 {
+    text-align: left; /* Alinha os títulos à esquerda */
+    font-size: 1.8em; /* Define um tamanho maior para os títulos */
+    margin-bottom: 10px; /* Adiciona espaço abaixo dos títulos */
+    color: #007acc; /* Destaca os títulos com uma cor */
+    border-bottom: 1px solid #ddd; /* Linha fina abaixo do título */
+}
+
+/* Estilo para os parágrafos */
+.about-page p {
+    margin-bottom: 20px; /* Espaçamento entre parágrafos */
+    text-align: justify; /* Justifica o texto para alinhamento uniforme */
+}
+
+/* Estilo para as listas */
+.about-page ul {
+    margin-left: 20px; /* Adiciona recuo nas listas */
+    margin-bottom: 20px; /* Espaçamento abaixo das listas */
+}
+
+.about-page ul li {
+    line-height: 1.5; /* Ajusta o espaçamento entre os itens da lista */
+}
+/* ---- Modo Escuro ---- */
+body.dark-mode {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+body.dark-mode h1, 
+body.dark-mode h2 {
+    color: #4da6ff;
+}
+
+body.dark-mode a {
+    color: #4da6ff;
+}
+
+body.dark-mode .about-header {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+}
+
+body.dark-mode .about-page {
+    background: #1e1e1e;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    color: #f0f0f0;
+}
+
+body.dark-mode .about-structure pre {
+    background: #333;
+    color: #f0f0f0;
+}
+
+body.dark-mode .about-footer {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+}

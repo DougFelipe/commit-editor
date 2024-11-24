@@ -1,0 +1,30 @@
+{
+    "feat": {
+        "message": "✨ feat(ui): Adiciona funcionalidade de dark mode\n\nEsta funcionalidade permite alternar entre os modos claro e escuro.\n\n- Alterações no CSS.\n- Ajustes no localStorage.\n\nReviewed-by: João Silva\nRefs: #123",
+        "command": "git commit -m \"✨ feat(ui): Adiciona funcionalidade de dark mode\""
+    },
+    "fix": {
+        "message": "🐛 fix(auth): Corrige bug de autenticação ao expirar sessão\n\nEste commit corrige o problema ao tentar realizar o login após a sessão expirar.\n\n- Ajuste no timeout de sessão.\n- Refatoração da lógica de autenticação.\n\nReviewed-by: Maria Oliveira\nRefs: #456",
+        "command": "git commit -m \"🐛 fix(auth): Corrige bug de autenticação ao expirar sessão\""
+    },
+    "docs": {
+        "message": "📝 docs(readme): Atualiza instruções de instalação\n\nAdiciona informações sobre requisitos mínimos e etapas de configuração.\n\n- Seção 'Pré-requisitos'.\n- Passo a passo para rodar localmente.\n\nReviewed-by: Pedro Santos\nRefs: #789",
+        "command": "git commit -m \"📝 docs(readme): Atualiza instruções de instalação\""
+    },
+    "style": {
+        "message": "💄 style: Ajusta espaçamentos no layout principal\n\nEste commit realiza ajustes nos paddings e margins para melhor responsividade.\n\n- Corrige espaçamento entre cards.\n- Ajusta largura máxima do container principal.\n\nReviewed-by: Ana Lima\nRefs: #321",
+        "command": "git commit -m \"💄 style: Ajusta espaçamentos no layout principal\""
+    },
+    "refactor": {
+        "message": "🔨 refactor(api): Melhora estrutura de chamadas de API\n\nRefatora o módulo de chamadas HTTP para melhorar legibilidade e performance.\n\n- Substituição de callbacks por Promises.\n- Organização de métodos em classes.\n\nReviewed-by: Lucas Costa\nRefs: #654",
+        "command": "git commit -m \"🔨 refactor(api): Melhora estrutura de chamadas de API\""
+    },
+    "test": {
+        "message": "✅ test: Adiciona testes unitários para o módulo de login\n\nEste commit adiciona novos casos de teste para o fluxo de login.\n\n- Testa autenticação com credenciais válidas.\n- Validação de erros para credenciais inválidas.\n\nReviewed-by: Mariana Souza\nRefs: #987",
+        "command": "git commit -m \"✅ test: Adiciona testes unitários para o módulo de login\""
+    },
+    "chore": {
+        "message": "🔧 chore(deps): Atualiza dependências do projeto\n\nAtualiza pacotes para versões mais recentes.\n\n- Atualiza 'express' para v4.18.2.\n- Atualiza 'jest' para v27.5.1.\n\nReviewed-by: Felipe Dias\nRefs: #111",
+        "command": "git commit -m \"🔧 chore(deps): Atualiza dependências do projeto\""
+    }
+}

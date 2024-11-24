@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Conventional Commits</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="headerLoader.js" defer></script>
+</head>
+<body>
+<main>
+    <h1>Commit Editor</h1>
+    <p class="editor-description">
+        Preencha os campos conforme necessário, visualize a mensagem gerada e copie o comando para usar diretamente no terminal
+    </p>
+    <section id="editor-container">
+        <div id="commit-form">
+            <h2>Configuração do Git Add</h2>
+            <form id="commitEditor">
+                <!-- Seção de Git Add -->
+                <div class="form-section">
+                    <!-- Container para alinhar seletor e campo de entrada -->
+                    <div class="file-input-container">
+                        <!-- Seletor de arquivos comuns -->
+                        <div class="file-selector">
+                            <label for="fileType">Selecionar Arquivo Comum</label>
+                            <select id="fileType">
+                                <option value="">Selecione um arquivo...</option>
+                                <!-- Opções do seletor serão carregadas dinamicamente -->
+                            </select>
+                        </div>
+
+                        <!-- Campo de entrada para arquivos -->
+                        <div class="file-input">
+                            <label for="files">Arquivos para adicionar (deixe em branco para "add .")</label>
+                            <input type="text" id="files" placeholder="Ex: src/index.js, README.md">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">                    
+                <!-- Seção de Configuração do Commit -->
+                <h2>Configuração do Commit</h2>
+                    <div class="emoji-commit-type">
+                        <div class="emoji-option">
+                            <label for="includeEmoji">Emoji opcional</label>
+                            <input type="checkbox" id="includeEmoji">
+                        </div>
+                        <div class="commit-type">
+                            <label for="commitType">Tipo de Commit</label>
+                            <select id="commitType" required></select>
+                        </div>
+                    </div>
+
+                    <label for="scope">Escopo (Opcional)</label>
+                    <input type="text" id="scope" placeholder="Ex: módulo, componente">
+
+                    <label for="description">Descrição do Commit</label>
+                    <input type="text" id="description" placeholder="Descrição breve" required>
+
+                    <label for="body">Corpo do Commit (Opcional)</label>
+                    <textarea id="body" placeholder="Descrição detalhada do commit"></textarea>
+
+                    <!-- Alteração do footer para textarea -->
+                    <label for="footer">Footer (Opcional)</label>
+                    <textarea id="footer" placeholder="Informações adicionais"></textarea>
+
+                    <label for="reviewedBy">Revisado por (Opcional)</label>
+                    <input type="text" id="reviewedBy" placeholder="Ex: Nome do revisor">
+
+                    <label for="refs">Refs (Opcional)</label>
+                    <input type="text" id="refs" placeholder="Ex: #123">
+                </div>
+
+                <!-- Seção de Configuração do Git Push -->
+                <h2>Configuração do Git Push</h2>
+                <div class="form-section">
+                    <label for="repository">Repositório</label>
+                    <input type="text" id="repository" placeholder="URL do repositório" required>
+
+                    <label for="branch">Branch</label>
+                    <input type="text" id="branch" placeholder="Nome da branch" required>
+                </div>
+
+                <button type="button" id="clearFormButton">Limpar Formulário</button>
+            </form>
+        </div>
+
+        <div id="preview-container">
+            <div class="card">
+                <h2>Mensagem de Commit</h2>
+                <pre id="commitPreview">(A pré-visualização aparecerá aqui)</pre>
+            </div>
+            
+            <div class="card">
+                <h2>Comando para o Terminal</h2>
+                <pre id="terminalCommand">(Comando git aparecerá aqui)</pre>
+                <button id="copyCommandButton">Copiar Comando</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">Commit Editor</span> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/DougFelipe">Douglas Felipe</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a></p>    </footer>
+<script src="script.js"></script>
+</body>
+</html>

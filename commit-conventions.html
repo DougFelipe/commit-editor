@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - Conventional Commit Editor</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="headerLoader.js" defer></script>
+</head>
+<body>
+    <main class="about-page">
+        <section class="about-intro">
+            <h2>O que são Conventional Commits?</h2>
+            <p>
+                <em>Conventional Commits</em> são convenções de nomenclatura para mensagens de <em>commit</em> que enfatizam com clareza as modificações realizadas. Essa abordagem padroniza as mensagens de <em>commit</em>, tornando-as mais informativas e fáceis de entender.
+            </p>
+            <p>
+                Eles são estruturados de forma a destacar o tipo de mudança feita, o escopo da mudança, e uma descrição clara da alteração ou adição.
+            </p>
+        </section>
+        <img src="commit_logo.png" alt="Commit Editor Logo" class="commit-logo">
+        <section class="about-structure">
+            <h2>Estrutura de uma Mensagem de Commit</h2>
+            <pre>
+tipo[escopo(opcional)]: descrição
+---LINHA EM BRANCO---
+[corpo (opcional)]
+---LINHA EM BRANCO---
+[rodapé (opcional)]
+            </pre>
+            <p>
+                Exemplo completo de commit com todos os campos preenchidos:
+            </p>
+            <pre>
+feat(api): adiciona endpoint para criação de usuários
+
+- Adiciona um novo endpoint na API para criação de usuários
+- Recurso é necessário para integrar com o módulo de autenticação
+
+BREAKING CHANGE: altera a estrutura de resposta do endpoint de login
+Agora a resposta inclui o campo "userId" para melhor integração
+
+Refs: #123
+Reviewed-by: Michael Douglas
+Closes: #456
+            </pre>
+            <p>
+                Este exemplo mostra todos os campos: tipo, escopo, descrição, corpo e rodapé. O campo <code>BREAKING CHANGE</code> destaca alterações que quebram compatibilidade com versões anteriores. 
+                Os campos <code>Refs</code>, <code>Reviewed-by</code> e <code>Closes</code> fornecem informações adicionais sobre a alteração.
+            </p>
+            <h3>Informações sobre cada parte da estrutura</h3>
+            <p>
+                <strong>Type</strong><br>
+                Deve ser um dos seguintes:
+            </p>
+            <ul>
+                <li><strong>build:</strong> Alterações que afetam o sistema de build ou dependências externas (exemplos: gulp, broccoli, npm).</li>
+                <li><strong>ci:</strong> Alterações em arquivos de configuração de integração contínua e scripts (exemplos: Travis, Circle, BrowserStack, SauceLabs).</li>
+                <li><strong>docs:</strong> Apenas alterações na documentação.</li>
+                <li><strong>feat:</strong> Uma nova funcionalidade.</li>
+                <li><strong>fix:</strong> Uma correção de bug.</li>
+                <li><strong>perf:</strong> Uma alteração de código que melhora o desempenho.</li>
+                <li><strong>refactor:</strong> Alteração de código que não corrige um bug nem adiciona uma funcionalidade.</li>
+                <li><strong>style:</strong> Alterações que não afetam o significado do código (espaços em branco, formatação, ponto e vírgulas ausentes, etc).</li>
+                <li><strong>test:</strong> Adição ou correção de testes existentes.</li>
+                <li>Entre outros...</li>
+            </ul>
+            <p>
+                <strong>Scope</strong><br>
+                O escopo deve ser o nome da unidade relevante do projeto, como percebido por quem está lendo o changelog gerado a partir das mensagens de commit.
+            </p>
+            <p>
+                <strong>Subject</strong><br>
+                O assunto contém uma descrição sucinta da alteração:
+            </p>
+            <ul>
+                <li>Use o presente do indicativo e o modo imperativo: "alterar" e não "alterado" ou "altera".</li>
+                <li>Não inicie com letra maiúscula.</li>
+                <li>Não termine com ponto (.).</li>
+            </ul>
+            <p>
+                <strong>Body</strong><br>
+                Assim como no assunto, use o presente do indicativo e o modo imperativo: "alterar" e não "alterado" ou "altera". O corpo deve incluir a motivação para a alteração e contrastar com o comportamento anterior.
+            </p>
+            <p>
+                <strong>Footer</strong><br>
+                O rodapé deve conter qualquer informação sobre <em>Breaking Changes</em> e também é o local para referenciar problemas no GitHub que este commit resolve.
+            </p>
+            <p>
+                <strong>Breaking Changes</strong> devem começar com a palavra <code>BREAKING CHANGE:</code>, seguida por um espaço ou duas novas linhas. O restante da mensagem do commit deve ser usado para descrever a mudança.
+            </p>
+        </section>
+
+        <section class="about-references">
+            <h2>Referências</h2>
+            <ul>
+                <li><a href="https://www.conventionalcommits.org/pt-br/v1.0.0/" target="_blank">Conventional Commits 1.0.0 </a></li>
+                <li><a href="https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines" target="_blank">Angular - Commit Message Guidelines</a></li>
+                <li><a href="https://commitlint.js.org/reference/rules" target="_blank">commitlint Rules</a></li>
+                <li><a href="https://github.com/DougFelipe/conventional_commits" target="_blank">DougFelipe - Conventional Commits</a></li>
+                <li><a href="https://github.com/iuricode/padroes-de-commits" target="_blank">Padrões de Commits - IuriCode</a></li>
+                <li><a href="https://medium.com/linkapi-solutions/conventional-commits-pattern-3778d1a1e657" target="_blank">Conventional Commits Pattern</a></li>
+                <li><a href="https://kapeli.com/cheat_sheets/Conventional_Commits.docset/Contents/Resources/Documents/index" target="_blank">Conventional Commits Cheat Sheet</a></li>
+                <li><a href="https://www.alura.com.br/artigos/simplificando-controle-versao-conventional-commits" target="_blank">Simplificando o controle de versão com Conventional Commits</a></li>
+            </ul>
+        </section>
+    </main>
+    <footer class="about-footer">
+        <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">Commit Editor</span> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/DougFelipe">Douglas Felipe</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a></p>    </footer>
+    </body>
+</html>
